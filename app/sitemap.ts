@@ -14,6 +14,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/abd-vizesi/ds-160-doldurma",
     "/sikca-sorulan-sorular",
     "/iletisim",
+    "/blog",
+    "/blog/abd-vizesi-neden-reddedilir",
+    "/blog/ds-160-hatalari",
+
   ];
 
   return routes.map((path) => ({

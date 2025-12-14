@@ -260,6 +260,50 @@ export default function AbdVizesiPage() {
           </div>
         </div>
       </section>
+      <section className="mt-10 rounded-3xl border p-8">
+        <h2 className="text-2xl font-semibold">
+            Vize Rehberi’nden Öne Çıkanlar
+        </h2>
+        <p className="mt-2 text-neutral-700">
+            ABD vize süreçlerinde en sık karşılaşılan riskler ve danışmanlık
+            bakış açısıyla hazırlanmış rehberler.
+        </p>
+
+        <ul className="mt-6 space-y-3 text-sm">
+            <li>
+                <Link
+                    href="/blog/abd-vizesi-neden-reddedilir"
+                className="underline"
+      >
+        ABD vizesi neden reddedilir?
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/blog/ds-160-hatalari"
+        className="underline"
+      >
+        DS-160’ta yapılan 10 kritik hata
+      </Link>
+    </li>
+    <li>
+      <Link
+        href="/blog/b1-b2-mulakat-sorulari"
+        className="underline"
+      >
+        B1/B2 mülakat soruları (danışman gözüyle)
+      </Link>
+    </li>
+  </ul>
+</section>
+<Link
+  href="/blog"
+  className="inline-flex underline text-sm mt-6"
+>
+  Vize Rehberi → ABD vize süreçlerini danışman gözüyle inceleyin
+</Link>
+
+  
     </main>
   );
 }

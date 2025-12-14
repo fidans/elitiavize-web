@@ -88,7 +88,7 @@ export default function SiteHeader() {
             SSS
           </Link>
           <Link
-            href="/vizerehberi"
+            href="/blog"
             className="rounded-xl px-3 py-2 text-sm hover:bg-neutral-50"
           >
             Vize Rehberi

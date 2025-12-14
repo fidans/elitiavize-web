@@ -19,6 +19,12 @@ const posts = [
     title: "DS-160’ta yapılan 10 kritik hata",
     desc: "Formda en sık yapılan hatalar, red riskini nasıl artırır ve danışmanlık yaklaşımı.",
   },
+  {
+    slug: "b1-b2-mulakat-sorulari",
+    title: "B1/B2 mülakat soruları (danışman gözüyle)",
+    desc: "ABD vize mülakatında en sık sorulan sorular ve riskli cevap alanları.",
+  },
+
 ];
 
 

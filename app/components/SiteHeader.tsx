@@ -85,6 +85,12 @@ export default function SiteHeader() {
               active("/sikca-sorulan-sorular") && "bg-neutral-50 font-medium"
             )}
           >
+          <Link
+            href="/blog"
+            className="rounded-xl px-3 py-2 text-sm hover:bg-neutral-50"
+          >
+            Blog
+          </Link>
             SSS
           </Link>
           <Link

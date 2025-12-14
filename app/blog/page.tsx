@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blog | ABD Vize Danışmanlığı | Elitia Vize",
+  title: "Vize Rehberi | ABD Vize Danışmanlığı | Elitia Vize",
   description:
     "ABD vize başvuruları, DS-160, B1/B2 ve mülakat süreçleri hakkında danışman gözüyle hazırlanan rehberler.",
   alternates: { canonical: "/blog" },
@@ -31,7 +31,7 @@ const posts = [
 export default function BlogPage() {
   return (
     <main className="mx-auto max-w-6xl px-6 py-12">
-      <h1 className="text-3xl font-semibold sm:text-5xl">Blog</h1>
+      <h1 className="text-3xl font-semibold sm:text-5xl">Vize Rehberi</h1>
       <p className="mt-4 max-w-3xl text-neutral-700">
         ABD vize süreçlerine dair pratik, net ve danışmanlık odaklı içerikler.
       </p>

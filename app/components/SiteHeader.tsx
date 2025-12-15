@@ -137,6 +137,17 @@ export default function SiteHeader() {
                     >
                       ABD Vize Danışmanlığı
                     </Link>
+                    <Link
+                      href="/abd-vizesi/red-sonrasi-basvuru"
+                      className={cn(
+                        "rounded-xl px-3 py-2 hover:bg-neutral-50",
+                        active("/abd-vizesi/red-sonrasi-basvuru") && "bg-neutral-50 font-medium"
+                      )}
+                      onClick={() => setServicesOpen(false)}
+                    >
+                      Red Sonrası Başvuru
+                    </Link>
+
 
                     <Link
                       href="/green-card-dv-lottery"
@@ -260,7 +271,15 @@ export default function SiteHeader() {
                   >
                     ABD Vize Danışmanlığı
                   </Link>
-
+                  <Link
+                    className={cn(
+                      "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
+                      active("/abd-vizesi/red-sonrasi-basvuru") && "bg-neutral-50 font-medium"
+                    )}
+                    href="/abd-vizesi/red-sonrasi-basvuru"
+                  >
+                    Red Sonrası Başvuru
+                  </Link>
                   <Link
                     className={cn(
                       "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",

@@ -110,6 +110,10 @@ export default function Post() {
           </div>
         </div>
       </article>
+      <Link href="/abd-vizesi/red-sonrasi-basvuru" className="underline text-sm">
+  Red sonrası yeniden başvuru rehberi →
+</Link>
+
     </main>
   );
 }

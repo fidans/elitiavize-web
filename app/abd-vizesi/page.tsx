@@ -294,16 +294,21 @@ export default function AbdVizesiPage() {
         B1/B2 mülakat soruları (danışman gözüyle)
       </Link>
     </li>
+    <li>
+      <Link
+        href="/blog"
+        className="inline-flex underline text-sm mt-6"
+      >
+        Vize Rehberi → ABD vize süreçlerini danışman gözüyle inceleyin
+      </Link>
+    </li>
+    <li>
+      <Link href="/abd-vizesi/red-sonrasi-basvuru" className="underline text-sm">
+        Red sonrası yeniden başvuru rehberi →
+      </Link>
+    </li>
   </ul>
 </section>
-<Link
-  href="/blog"
-  className="inline-flex underline text-sm mt-6"
->
-  Vize Rehberi → ABD vize süreçlerini danışman gözüyle inceleyin
-</Link>
-
-  
     </main>
   );
 }

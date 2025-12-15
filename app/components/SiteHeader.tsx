@@ -115,6 +115,19 @@ export default function SiteHeader() {
                 >
                   <nav className="flex flex-col p-2 text-sm" role="menu">
                     <Link
+                      href="/hizmetler"
+                      className={cn(
+                        "rounded-xl px-3 py-2 hover:bg-neutral-50",
+                        active("/hizmetler") && "bg-neutral-50 font-medium"
+                      )}
+                      onClick={() => setServicesOpen(false)}
+                    >
+                      Hizmetler (Genel)
+                    </Link>
+
+                    <div className="my-1 h-px bg-neutral-200" />
+
+                    <Link
                       href="/abd-vizesi"
                       className={cn(
                         "rounded-xl px-3 py-2 hover:bg-neutral-50",

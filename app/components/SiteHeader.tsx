@@ -22,7 +22,9 @@ function cn(...classes: Array<string | false | undefined | null>) {
 
 export default function SiteHeader() {
   const pathname = usePathname();
+
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const active = useMemo(() => {
@@ -38,9 +40,18 @@ export default function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    // route change -> close mobile
+    // route change -> close menus
     setMobileOpen(false);
+    setServicesOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setServicesOpen(false);
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
     <header
@@ -69,6 +80,80 @@ export default function SiteHeader() {
           >
             Anasayfa
           </Link>
+
+          {/* Hizmetler (click-to-toggle + overlay) */}
+          <div className="relative">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                setServicesOpen((v) => !v);
+              }}
+              className={cn(
+                "rounded-xl px-3 py-2 text-sm hover:bg-neutral-50",
+                servicesOpen && "bg-neutral-50 font-medium"
+              )}
+              aria-haspopup="menu"
+              aria-expanded={servicesOpen}
+            >
+              Hizmetler
+            </button>
+
+            {servicesOpen && (
+              <>
+                {/* Overlay: menu dışına tıklayınca kapatır */}
+                <div
+                  className="fixed inset-0 z-10"
+                  onClick={() => setServicesOpen(false)}
+                  aria-hidden="true"
+                />
+
+                {/* Menu panel */}
+                <div
+                  className="absolute left-0 z-20 mt-2 w-64 rounded-2xl border bg-white shadow-lg"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <nav className="flex flex-col p-2 text-sm" role="menu">
+                    <Link
+                      href="/abd-vizesi"
+                      className={cn(
+                        "rounded-xl px-3 py-2 hover:bg-neutral-50",
+                        active("/abd-vizesi") && "bg-neutral-50 font-medium"
+                      )}
+                      onClick={() => setServicesOpen(false)}
+                    >
+                      ABD Vize Danışmanlığı
+                    </Link>
+
+                    <Link
+                      href="/green-card-dv-lottery"
+                      className={cn(
+                        "rounded-xl px-3 py-2 hover:bg-neutral-50",
+                        active("/green-card-dv-lottery") &&
+                          "bg-neutral-50 font-medium"
+                      )}
+                      onClick={() => setServicesOpen(false)}
+                    >
+                      Green Card (DV Lottery)
+                    </Link>
+
+                    <Link
+                      href="/randevu-one-cekme"
+                      className={cn(
+                        "rounded-xl px-3 py-2 hover:bg-neutral-50",
+                        active("/randevu-one-cekme") &&
+                          "bg-neutral-50 font-medium"
+                      )}
+                      onClick={() => setServicesOpen(false)}
+                    >
+                      Randevu Öne Çekme
+                    </Link>
+                  </nav>
+                </div>
+              </>
+            )}
+          </div>
+
           <Link
             href="/abd-vizesi"
             className={cn(
@@ -78,6 +163,17 @@ export default function SiteHeader() {
           >
             ABD Vizesi
           </Link>
+
+          <Link
+            href="/blog"
+            className={cn(
+              "rounded-xl px-3 py-2 text-sm hover:bg-neutral-50",
+              active("/blog") && "bg-neutral-50 font-medium"
+            )}
+          >
+            Vize Rehberi
+          </Link>
+
           <Link
             href="/sikca-sorulan-sorular"
             className={cn(
@@ -87,12 +183,7 @@ export default function SiteHeader() {
           >
             Sorular
           </Link>
-          <Link
-            href="/blog"
-            className="rounded-xl px-3 py-2 text-sm hover:bg-neutral-50"
-          >
-            Vize Rehberi
-          </Link> 
+
           <Link
             href="/iletisim"
             className={cn(
@@ -132,9 +223,54 @@ export default function SiteHeader() {
         <div className="border-t bg-white md:hidden">
           <div className="mx-auto max-w-6xl px-6 py-4">
             <div className="grid gap-2">
-              <Link className="rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50" href="/">
+              <Link
+                className={cn(
+                  "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
+                  active("/") && "bg-neutral-50 font-medium"
+                )}
+                href="/"
+              >
                 Anasayfa
               </Link>
+
+              <div className="rounded-2xl border p-3">
+                <div className="px-1 pb-2 text-xs font-semibold text-neutral-500">
+                  Hizmetler
+                </div>
+                <div className="grid gap-2">
+                  <Link
+                    className={cn(
+                      "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
+                      active("/abd-vizesi") && "bg-neutral-50 font-medium"
+                    )}
+                    href="/abd-vizesi"
+                  >
+                    ABD Vize Danışmanlığı
+                  </Link>
+
+                  <Link
+                    className={cn(
+                      "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
+                      active("/green-card-dv-lottery") &&
+                        "bg-neutral-50 font-medium"
+                    )}
+                    href="/green-card-dv-lottery"
+                  >
+                    Green Card (DV Lottery)
+                  </Link>
+
+                  <Link
+                    className={cn(
+                      "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
+                      active("/randevu-one-cekme") &&
+                        "bg-neutral-50 font-medium"
+                    )}
+                    href="/randevu-one-cekme"
+                  >
+                    Randevu Öne Çekme
+                  </Link>
+                </div>
+              </div>
 
               <div className="rounded-2xl border p-3">
                 <div className="px-1 pb-2 text-xs font-semibold text-neutral-500">
@@ -156,11 +292,33 @@ export default function SiteHeader() {
                 </div>
               </div>
 
-              <Link className="rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50" href="/sikca-sorulan-sorular">
+              <Link
+                className={cn(
+                  "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
+                  active("/blog") && "bg-neutral-50 font-medium"
+                )}
+                href="/blog"
+              >
+                Vize Rehberi
+              </Link>
+
+              <Link
+                className={cn(
+                  "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
+                  active("/sikca-sorulan-sorular") && "bg-neutral-50 font-medium"
+                )}
+                href="/sikca-sorulan-sorular"
+              >
                 Sık Sorulan Sorular
               </Link>
 
-              <Link className="rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50" href="/iletisim">
+              <Link
+                className={cn(
+                  "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
+                  active("/iletisim") && "bg-neutral-50 font-medium"
+                )}
+                href="/iletisim"
+              >
                 İletişim
               </Link>
 

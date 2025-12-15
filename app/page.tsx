@@ -249,6 +249,13 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <Link
+  href="/blog"
+  className="inline-flex underline text-sm mt-8"
+>
+  Vize Rehberi → ABD vize süreçlerini danışman gözüyle inceleyin
+</Link>
+
     </main>
   );
 }

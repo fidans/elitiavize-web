@@ -85,7 +85,7 @@ export default function SiteHeader() {
               active("/sikca-sorulan-sorular") && "bg-neutral-50 font-medium"
             )}
           >
-            SSS
+            Sorular
           </Link>
           <Link
             href="/blog"

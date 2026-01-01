@@ -89,187 +89,348 @@ function ServiceJsonLd() {
 
 export default function B1B2Page() {
   return (
-    <main className="mx-auto max-w-6xl px-6 py-12">
+    <main className="min-h-screen">
       <FAQJsonLd />
       <ServiceJsonLd />
 
-      {/* Breadcrumb */}
-      <nav className="text-sm text-neutral-600">
-        <Link className="hover:underline" href="/">
-          Anasayfa
-        </Link>{" "}
-        <span className="text-neutral-400">/</span>{" "}
-        <Link className="hover:underline" href="/abd-vizesi">
-          ABD Vizesi
-        </Link>{" "}
-        <span className="text-neutral-400">/</span>{" "}
-        <span className="text-neutral-900">B1/B2 Turistik Vize</span>
-      </nav>
+      {/* Breadcrumb + Hero */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(24,154,144,.10)] to-transparent" />
 
-      {/* Hero */}
-      <section className="mt-6 rounded-3xl border bg-white p-8 shadow-sm">
-        <div className="flex flex-col gap-5">
-          <div className="inline-flex w-fit items-center gap-2 rounded-full border px-4 py-2 text-sm">
-            <span className="font-medium">B1/B2 Öncelikli Danışmanlık</span>
-            <span className="text-neutral-500">•</span>
-            <span className="text-neutral-600">Turistik & iş ziyareti</span>
+        <div className="relative mx-auto max-w-6xl px-6 pt-14 pb-10">
+          {/* Breadcrumb */}
+          <nav className="text-sm text-neutral-600">
+            <Link className="hover:underline" href="/">
+              Anasayfa
+            </Link>{" "}
+            <span className="text-neutral-400">/</span>{" "}
+            <Link className="hover:underline" href="/abd-vizesi">
+              ABD Vizesi
+            </Link>{" "}
+            <span className="text-neutral-400">/</span>{" "}
+            <span className="text-neutral-900">B1/B2 Turistik Vize</span>
+          </nav>
+
+          <div className="mt-6 rounded-3xl bg-white p-8 shadow-soft">
+            <div className="flex flex-col gap-6">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 text-sm shadow-soft">
+                <span className="font-medium text-[var(--brand-navy)]">
+                  B1/B2 Öncelikli Danışmanlık
+                </span>
+                <span className="text-neutral-400">•</span>
+                <span className="text-neutral-600">Turistik & iş ziyareti</span>
+              </div>
+
+              <h1 className="max-w-4xl text-3xl font-semibold leading-tight sm:text-5xl">
+                B1/B2 başvurunuzu{" "}
+                <span className="text-[var(--brand-teal)] font-bold">
+                  net
+                </span>{" "}
+                ve{" "}
+                <span className="text-[var(--brand-teal)] font-bold">
+                  tutarlı
+                </span>{" "}
+                şekilde hazırlayın.
+              </h1>
+
+              <p className="max-w-3xl text-neutral-700 sm:text-lg">
+                B1/B2 başvurularında küçük hatalar bile red riskini artırabilir.
+                Elitia Vize; <strong>profilinizi analiz eder</strong>,{" "}
+                <strong>DS-160 akışını doğrular</strong>,{" "}
+                <strong>evrakları kontrol eder</strong> ve{" "}
+                <strong>mülakat hazırlığı</strong> için plan çıkarır.
+              </p>
+
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  className="btn-primary"
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  WhatsApp’tan Ön Değerlendirme
+                </a>
+
+                <Link
+                  href="/iletisim"
+                  className="text-sm font-medium text-[var(--brand-navy)] underline underline-offset-4"
+                >
+                  İletişim Formu
+                </Link>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-3">
+                <div className="rounded-2xl bg-neutral-50 p-4">
+                  <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                    🧾 DS-160 Tutarlılığı
+                  </div>
+                  <div className="mt-1 text-sm text-neutral-600">
+                    Beyanların çelişmemesi, akışın net olması.
+                  </div>
+                </div>
+                <div className="rounded-2xl bg-neutral-50 p-4">
+                  <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                    🧭 Amaç Netliği
+                  </div>
+                  <div className="mt-1 text-sm text-neutral-600">
+                    Seyahat planı profilinizle uyumlu görünmeli.
+                  </div>
+                </div>
+                <div className="rounded-2xl bg-neutral-50 p-4">
+                  <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                    📑 Evrak Uyumu
+                  </div>
+                  <div className="mt-1 text-sm text-neutral-600">
+                    “Var” olması kadar, düzen ve uyum önemli.
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-xs text-neutral-500">
+                Danışmanlık hizmetidir. Nihai karar ilgili resmi makamlar tarafından
+                verilir.
+              </p>
+            </div>
           </div>
-
-          <h1 className="text-3xl font-semibold leading-tight sm:text-5xl">
-            B1/B2 Turistik ABD Vizesi başvurunuzu{" "}
-            <span className="underline decoration-neutral-300">net</span> ve{" "}
-            <span className="underline decoration-neutral-300">tutarlı</span> şekilde hazırlıyoruz.
-          </h1>
-
-          <p className="max-w-3xl text-neutral-700 sm:text-lg">
-            B1/B2 başvurularında küçük hatalar bile red riskini artırabilir. Elitia Vize;{" "}
-            <strong>profilinizi analiz eder</strong>, <strong>DS-160 akışını doğrular</strong>,{" "}
-            <strong>evrakları kontrol eder</strong> ve <strong>mülakat hazırlığı</strong> için plan çıkarır.
-          </p>
-
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <a
-              className="inline-flex items-center justify-center rounded-2xl border px-5 py-3 text-sm font-medium shadow-sm hover:bg-neutral-50"
-              href={WHATSAPP}
-              target="_blank"
-              rel="noreferrer"
-            >
-              WhatsApp’tan Ön Değerlendirme
-            </a>
-            <Link
-              className="inline-flex items-center justify-center rounded-2xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
-              href="/iletisim"
-            >
-              İletişim Formu
-            </Link>
-          </div>
-
-          <p className="text-xs text-neutral-500">
-            Not: Danışmanlık hizmetimiz başvuruyu hazırlama ve süreç yönetimi sunar; nihai karar ilgili resmi
-            makamlar tarafından verilir.
-          </p>
         </div>
       </section>
 
-      {/* Why / Risks */}
-      <section className="mt-10 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-3xl border p-8">
-          <h2 className="text-2xl font-semibold">B1/B2’de kritik noktalar</h2>
-          <p className="mt-3 text-neutral-700">
-            B1/B2 başvurularında değerlendirme, başvuru sahibinin profil bütünlüğü üzerinden yapılır. En sık
-            sorun yaşanan başlıklar:
-          </p>
-
-          <ul className="mt-6 space-y-3 text-sm text-neutral-700">
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">DS-160 Tutarlılığı</div>
-              <div className="mt-1 text-neutral-600">
-                İş/gelir/seyahat amacı gibi alanlarda çelişki veya eksik anlatım risk yaratabilir.
-              </div>
-            </li>
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">Seyahat Amacının Netliği</div>
-              <div className="mt-1 text-neutral-600">
-                Planın belirsiz olması veya profil ile uyumsuz görünmesi soru işaretleri doğurabilir.
-              </div>
-            </li>
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">Evrak Uyum ve Düzeni</div>
-              <div className="mt-1 text-neutral-600">
-                Evrakların “var” olması kadar, profilinizle uyumu ve düzeni de önemlidir.
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div className="rounded-3xl border p-8">
-          <h2 className="text-2xl font-semibold">Elitia Vize bu süreçte ne yapar?</h2>
-          <p className="mt-3 text-neutral-700">
-            Bizim yaklaşımımız “tek seferlik evrak listesi” değil; profilinize göre başvuruyu{" "}
-            <strong>uçtan uca</strong> yönetmektir.
-          </p>
-
-          <ol className="mt-6 space-y-3 text-sm text-neutral-700">
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">1) Ön Değerlendirme</div>
-              <div className="mt-1 text-neutral-600">
-                Profilinize göre riskleri görür, hangi noktaları güçlendireceğimizi belirleriz.
-              </div>
-            </li>
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">2) DS-160 Danışmanlığı</div>
-              <div className="mt-1 text-neutral-600">
-                Form akışını netleştirir, bilgileri sizinle doğrulayarak tutarlılığı artırırız.
-              </div>
-            </li>
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">3) Evrak Kontrol + Mülakat Hazırlığı</div>
-              <div className="mt-1 text-neutral-600">
-                Evrak setini düzenler, mülakat pratiği için profilinize uygun bir plan çıkarırız.
-              </div>
-            </li>
-          </ol>
-
-          <div className="mt-6 rounded-2xl border p-5">
-            <div className="text-sm font-medium">Hızlı Başlangıç</div>
-            <p className="mt-1 text-sm text-neutral-600">
-              WhatsApp’tan yazın; profilinize göre B1/B2 başvuru yol haritasını çıkaralım.
+      {/* Why / Risks + What we do */}
+      <section className="mx-auto max-w-6xl px-6 py-12">
+        <div className="grid gap-6 lg:grid-cols-2">
+          {/* Critical points */}
+          <div className="rounded-3xl bg-white p-8 shadow-soft">
+            <h2 className="text-2xl font-semibold text-[var(--brand-navy)]">
+              B1/B2’de kritik noktalar
+            </h2>
+            <p className="mt-3 text-neutral-700">
+              B1/B2 başvurularında değerlendirme, başvuru sahibinin{" "}
+              <strong>profil bütünlüğü</strong> üzerinden yapılır. En sık sorun
+              yaşanan başlıklar:
             </p>
-            <div className="mt-4">
-              <a
-                className="inline-flex items-center justify-center rounded-2xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
-                href={WHATSAPP}
-                target="_blank"
-                rel="noreferrer"
-              >
-                WhatsApp’a Git
-              </a>
+
+            <div className="mt-6 grid gap-3">
+              {[
+                {
+                  icon: "🧾",
+                  title: "DS-160 Tutarlılığı",
+                  desc: "İş/gelir/seyahat amacı gibi alanlarda çelişki veya eksik anlatım risk yaratabilir.",
+                },
+                {
+                  icon: "🧭",
+                  title: "Seyahat Amacının Netliği",
+                  desc: "Planın belirsiz olması veya profil ile uyumsuz görünmesi soru işaretleri doğurabilir.",
+                },
+                {
+                  icon: "📑",
+                  title: "Evrak Uyum ve Düzeni",
+                  desc: "Evrakların “var” olması kadar, profilinizle uyumu ve düzeni de önemlidir.",
+                },
+              ].map((x) => (
+                <div key={x.title} className="rounded-2xl bg-neutral-50 p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-2xl bg-white shadow-sm text-lg">
+                      {x.icon}
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                        {x.title}
+                      </div>
+                      <div className="mt-1 text-sm text-neutral-600">
+                        {x.desc}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* What Elitia does */}
+          <div className="rounded-3xl bg-white p-8 shadow-soft">
+            <h2 className="text-2xl font-semibold text-[var(--brand-navy)]">
+              Elitia Vize bu süreçte ne yapar?
+            </h2>
+            <p className="mt-3 text-neutral-700">
+              Bizim yaklaşımımız “tek seferlik evrak listesi” değil; profilinize göre
+              başvuruyu <strong>uçtan uca</strong> yönetmektir.
+            </p>
+
+            <div className="mt-6 grid gap-3">
+              {[
+                {
+                  icon: "🧭",
+                  title: "1) Ön Değerlendirme",
+                  desc: "Profilinize göre riskleri görür, hangi noktaları güçlendireceğimizi belirleriz.",
+                },
+                {
+                  icon: "🧾",
+                  title: "2) DS-160 Danışmanlığı",
+                  desc: "Form akışını netleştirir, bilgileri sizinle doğrulayarak tutarlılığı artırırız.",
+                },
+                {
+                  icon: "🎤",
+                  title: "3) Evrak Kontrol + Mülakat Hazırlığı",
+                  desc: "Evrak setini düzenler, mülakat pratiği için profilinize uygun bir plan çıkarırız.",
+                },
+              ].map((x) => (
+                <div key={x.title} className="rounded-2xl bg-neutral-50 p-4">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-2xl bg-white shadow-sm text-lg">
+                      {x.icon}
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                        {x.title}
+                      </div>
+                      <div className="mt-1 text-sm text-neutral-600">
+                        {x.desc}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 overflow-hidden rounded-3xl bg-gradient-to-br from-[rgba(24,154,144,.14)] to-white p-6">
+              <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                Hızlı Başlangıç
+              </div>
+              <p className="mt-1 text-sm text-neutral-700">
+                WhatsApp’tan yazın; profilinize göre B1/B2 başvuru yol haritasını
+                çıkaralım.
+              </p>
+              <div className="mt-4">
+                <a
+                  className="btn-primary"
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  WhatsApp’tan Yaz
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="mt-10 rounded-3xl border p-8">
-        <h2 className="text-2xl font-semibold">Sık Sorulan Sorular</h2>
-        <p className="mt-2 text-neutral-700">
-          Kısa ve net cevaplar (SEO + GEO uyumlu).
-        </p>
+      <section className="relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[rgba(0,49,93,.06)] to-transparent" />
+        <div className="relative mx-auto max-w-6xl px-6 py-14">
+          <div className="grid gap-8 lg:grid-cols-3">
+            <div className="lg:col-span-1">
+              <div className="rounded-3xl bg-white p-8 shadow-soft">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[rgba(24,154,144,.15)] text-xl">
+                    🇺🇸
+                  </div>
+                  <div>
+                    <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                      Elitia Vize
+                    </div>
+                    <div className="text-xs text-neutral-500">
+                      B1/B2 Danışmanlığı
+                    </div>
+                  </div>
+                </div>
 
-        <div className="mt-6 grid gap-4 lg:grid-cols-2">
-          {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border p-5">
-              <div className="text-sm font-semibold">{f.q}</div>
-              <div className="mt-2 text-sm text-neutral-700">{f.a}</div>
+                <h2 className="mt-6 text-2xl font-semibold text-[var(--brand-navy)]">
+                  Sık Sorulan Sorular
+                </h2>
+                <p className="mt-3 text-sm text-neutral-700">
+                  Kısa ve net cevaplar (SEO + GEO uyumlu).
+                </p>
+
+                <div className="mt-6 rounded-2xl bg-neutral-50 p-4 text-sm text-neutral-700">
+                  💡 En sık risk: <strong>tutarsız akış</strong>. Önce netleştirir,
+                  sonra başlarız.
+                </div>
+              </div>
             </div>
-          ))}
+
+            <div className="lg:col-span-2 grid gap-4 sm:grid-cols-2">
+              {faqs.map((f) => (
+                <div key={f.q} className="rounded-3xl bg-white p-6 shadow-soft">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-2xl bg-[rgba(24,154,144,.12)] text-lg">
+                      ❓
+                    </div>
+                    <div>
+                      <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                        {f.q}
+                      </div>
+                      <div className="mt-2 text-sm text-neutral-700 leading-relaxed">
+                        {f.a}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="mt-10 rounded-3xl border bg-white p-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 className="text-xl font-semibold">B1/B2 başvurunuzu birlikte planlayalım.</h3>
-            <p className="mt-1 text-sm text-neutral-600">
-              DS-160 + evrak kontrol + mülakat hazırlığı tek akışta.
-            </p>
+      <section className="relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-[rgba(24,154,144,.18)] via-[rgba(24,154,144,.08)] to-transparent" />
+        <div className="relative mx-auto max-w-6xl px-6 pt-6 pb-16">
+          <div className="overflow-hidden rounded-3xl bg-white shadow-soft">
+            <div className="grid gap-6 p-8 sm:grid-cols-2 sm:items-center">
+              <div>
+                <h3 className="text-2xl font-semibold text-[var(--brand-navy)]">
+                  B1/B2 başvurunuzu birlikte planlayalım.
+                </h3>
+                <p className="mt-2 text-sm text-neutral-700">
+                  DS-160 + evrak kontrol + mülakat hazırlığı tek akışta.
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2 text-xs text-neutral-600">
+                  <span className="rounded-full bg-neutral-100 px-3 py-1">
+                    🔒 Gizlilik
+                  </span>
+                  <span className="rounded-full bg-neutral-100 px-3 py-1">
+                    ✅ Tutarlılık
+                  </span>
+                  <span className="rounded-full bg-neutral-100 px-3 py-1">
+                    🎯 Plan
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex flex-col items-start gap-3 sm:items-end">
+                <a
+                  className="btn-primary px-6 py-3 text-base"
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  WhatsApp’tan Ön Değerlendirme
+                </a>
+                <p className="text-xs text-neutral-500 sm:text-right">
+                  Danışmanlık hizmetidir. Nihai karar resmi makamlarca verilir.
+                </p>
+              </div>
+            </div>
           </div>
-          <div className="flex gap-3">
-            <a
-              className="inline-flex items-center justify-center rounded-2xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
-              href={WHATSAPP}
-              target="_blank"
-              rel="noreferrer"
-            >
-              WhatsApp
-            </a>
+
+          <div className="mt-6 text-sm text-neutral-600">
+            Bir sonraki sayfa:{" "}
             <Link
-              className="inline-flex items-center justify-center rounded-2xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
-              href="/iletisim"
+              href="/abd-vizesi/ds-160-doldurma"
+              className="font-medium text-[var(--brand-navy)] underline underline-offset-4"
             >
-              İletişim
+              DS-160 danışmanlığı
+            </Link>{" "}
+            veya{" "}
+            <Link
+              href="/abd-vizesi/red-sonrasi-basvuru"
+              className="font-medium text-[var(--brand-navy)] underline underline-offset-4"
+            >
+              red sonrası başvuru
             </Link>
+            .
           </div>
         </div>
       </section>

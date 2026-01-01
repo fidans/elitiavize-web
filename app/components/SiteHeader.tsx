@@ -2,18 +2,39 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 const WHATSAPP =
   "https://wa.me/905437274621?text=Merhaba%20Elitia%20Vize.%20ABD%20vizesi%20i%C3%A7in%20%C3%B6n%20de%C4%9Ferlendirme%20almak%20istiyorum.";
 
-const nav = [
-  { href: "/abd-vizesi", label: "ABD Vizesi" },
-  { href: "/abd-vizesi/b1-b2-turistik-vize", label: "B1/B2 Turistik" },
-  { href: "/abd-vizesi/f1-ogrenci-vizesi", label: "F1 Öğrenci" },
-  { href: "/abd-vizesi/j1-degisim-programi", label: "J1 Değişim" },
-  { href: "/abd-vizesi/ds-160-doldurma", label: "DS-160" },
+const servicesDropdown = [
+  {
+    href: "/hizmetler",
+    t: "Hizmetler (Genel)",
+    d: "Tüm hizmetleri tek sayfada görün.",
+  },
+  {
+    href: "/abd-vizesi",
+    t: "ABD Vize Danışmanlığı",
+    d: "B1/B2 öncelikli danışmanlık akışı.",
+  },
+  {
+    href: "/abd-vizesi/red-sonrasi-basvuru",
+    t: "Red Sonrası Başvuru",
+    d: "Red analizi + yeni dosya kurgusu.",
+  },
+  {
+    href: "/green-card-dv-lottery",
+    t: "Green Card (DV Lottery)",
+    d: "Hata riskini azaltan başvuru kontrolü.",
+  },
+  {
+    href: "/randevu-one-cekme",
+    t: "Randevu Öne Çekme",
+    d: "Takip planı + profesyonel süreç.",
+  },
 ];
 
 function cn(...classes: Array<string | false | undefined | null>) {
@@ -22,9 +43,8 @@ function cn(...classes: Array<string | false | undefined | null>) {
 
 export default function SiteHeader() {
   const pathname = usePathname();
-
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const active = useMemo(() => {
@@ -40,159 +60,137 @@ export default function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    // route change -> close menus
-    setMobileOpen(false);
     setServicesOpen(false);
+    setMobileOpen(false);
   }, [pathname]);
-
-  useEffect(() => {
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") setServicesOpen(false);
-    }
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, []);
 
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b bg-white/80 backdrop-blur",
-        scrolled && "shadow-sm"
+        "sticky top-0 z-50 transition-all",
+        "bg-white/80 backdrop-blur-md",
+        scrolled && "shadow-soft"
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-2xl border bg-white shadow-sm" />
-          <div className="leading-tight">
-            <div className="text-sm font-semibold">Elitia Vize</div>
-            <div className="text-xs text-neutral-500">ABD Vize Danışmanlığı</div>
-          </div>
-        </Link>
+        {/* LOGO */}
+        <Link href="/" className="flex items-center gap-4">
+  {/* Logo */}
+  <div className="relative h-11 w-11 shrink-0">
+    <Image
+      src="/elitia-logo.svg"
+      alt="Elitia Vize Danışmanlığı"
+      fill
+      className="object-contain"
+      priority
+    />
+  </div>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-2 md:flex">
+  {/* Brand text */}
+  <div className="leading-tight">
+    <div className="flex items-center gap-2">
+      <span className="text-[15px] font-semibold tracking-tight text-[var(--brand-navy)]">
+        Elitia Vize
+      </span>
+      <span className="rounded-full border border-black/10 bg-white px-2 py-0.5 text-[10px] font-semibold text-neutral-500">
+        ABD
+      </span>
+    </div>
+    <div className="text-[11px] text-neutral-500">
+      Danışmanlık & süreç yönetimi
+    </div>
+  </div>
+</Link>
+
+        {/* DESKTOP NAV */}
+        <nav className="hidden items-center gap-1 md:flex">
           <Link
             href="/"
             className={cn(
-              "rounded-xl px-3 py-2 text-sm hover:bg-neutral-50",
-              active("/") && "bg-neutral-50 font-medium"
+              "nav-link px-3 py-2 rounded-xl text-sm",
+              active("/") && "bg-neutral-100 font-medium"
             )}
           >
             Anasayfa
           </Link>
 
-          {/* Hizmetler (click-to-toggle + overlay) */}
+          {/* Hizmetler */}
           <div className="relative">
             <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setServicesOpen((v) => !v);
-              }}
+              onClick={() => setServicesOpen(v => !v)}
               className={cn(
-                "rounded-xl px-3 py-2 text-sm hover:bg-neutral-50",
-                servicesOpen && "bg-neutral-50 font-medium"
+                "nav-link px-3 py-2 rounded-xl text-sm inline-flex items-center gap-2",
+                servicesOpen && "bg-neutral-100 font-medium"
               )}
-              aria-haspopup="menu"
-              aria-expanded={servicesOpen}
             >
               Hizmetler
+              <span
+                className={cn(
+                  "text-neutral-400 transition-transform",
+                  servicesOpen && "rotate-180"
+                )}
+              >
+                ▾
+              </span>
             </button>
 
             {servicesOpen && (
               <>
-                {/* Overlay: menu dışına tıklayınca kapatır */}
                 <div
                   className="fixed inset-0 z-10"
                   onClick={() => setServicesOpen(false)}
-                  aria-hidden="true"
                 />
 
-                {/* Menu panel */}
-                <div
-                  className="absolute left-0 z-20 mt-2 w-64 rounded-2xl border bg-white shadow-lg"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <nav className="flex flex-col p-2 text-sm" role="menu">
-                    <Link
-                      href="/hizmetler"
-                      className={cn(
-                        "rounded-xl px-3 py-2 hover:bg-neutral-50",
-                        active("/hizmetler") && "bg-neutral-50 font-medium"
-                      )}
-                      onClick={() => setServicesOpen(false)}
-                    >
-                      Hizmetler (Genel)
-                    </Link>
+                <div className="absolute left-1/2 z-20 mt-3 w-[520px] -translate-x-1/2 rounded-3xl bg-white border border-black/5 shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
+                  <div className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                          Hizmetler
+                        </div>
+                        <div className="text-xs text-neutral-500">
+                          Profilinize uygun doğru akışı seçin.
+                        </div>
+                      </div>
 
-                    <div className="my-1 h-px bg-neutral-200" />
+                      <a
+                        href={WHATSAPP}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-2xl bg-[var(--brand-teal)] px-4 py-2 text-xs font-semibold text-white"
+                      >
+                        WhatsApp’tan Başla
+                      </a>
+                    </div>
 
-                    <Link
-                      href="/abd-vizesi"
-                      className={cn(
-                        "rounded-xl px-3 py-2 hover:bg-neutral-50",
-                        active("/abd-vizesi") && "bg-neutral-50 font-medium"
-                      )}
-                      onClick={() => setServicesOpen(false)}
-                    >
-                      ABD Vize Danışmanlığı
-                    </Link>
-                    <Link
-                      href="/abd-vizesi/red-sonrasi-basvuru"
-                      className={cn(
-                        "rounded-xl px-3 py-2 hover:bg-neutral-50",
-                        active("/abd-vizesi/red-sonrasi-basvuru") && "bg-neutral-50 font-medium"
-                      )}
-                      onClick={() => setServicesOpen(false)}
-                    >
-                      Red Sonrası Başvuru
-                    </Link>
-
-
-                    <Link
-                      href="/green-card-dv-lottery"
-                      className={cn(
-                        "rounded-xl px-3 py-2 hover:bg-neutral-50",
-                        active("/green-card-dv-lottery") &&
-                          "bg-neutral-50 font-medium"
-                      )}
-                      onClick={() => setServicesOpen(false)}
-                    >
-                      Green Card (DV Lottery)
-                    </Link>
-
-                    <Link
-                      href="/randevu-one-cekme"
-                      className={cn(
-                        "rounded-xl px-3 py-2 hover:bg-neutral-50",
-                        active("/randevu-one-cekme") &&
-                          "bg-neutral-50 font-medium"
-                      )}
-                      onClick={() => setServicesOpen(false)}
-                    >
-                      Randevu Öne Çekme
-                    </Link>
-                  </nav>
+                    <div className="mt-4 grid grid-cols-2 gap-2">
+                      {servicesDropdown.map(i => (
+                        <Link
+                          key={i.href}
+                          href={i.href}
+                          onClick={() => setServicesOpen(false)}
+                          className="rounded-2xl border border-black/5 px-4 py-3 hover:-translate-y-0.5 hover:shadow-soft transition"
+                        >
+                          <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                            {i.t}
+                          </div>
+                          <div className="text-xs text-neutral-500">
+                            {i.d}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </>
             )}
           </div>
 
           <Link
-            href="/abd-vizesi"
-            className={cn(
-              "rounded-xl px-3 py-2 text-sm hover:bg-neutral-50",
-              active("/abd-vizesi") && "bg-neutral-50 font-medium"
-            )}
-          >
-            ABD Vizesi
-          </Link>
-
-          <Link
             href="/blog"
             className={cn(
-              "rounded-xl px-3 py-2 text-sm hover:bg-neutral-50",
-              active("/blog") && "bg-neutral-50 font-medium"
+              "nav-link px-3 py-2 rounded-xl text-sm",
+              active("/blog") && "bg-neutral-100 font-medium"
             )}
           >
             Vize Rehberi
@@ -201,8 +199,8 @@ export default function SiteHeader() {
           <Link
             href="/sikca-sorulan-sorular"
             className={cn(
-              "rounded-xl px-3 py-2 text-sm hover:bg-neutral-50",
-              active("/sikca-sorulan-sorular") && "bg-neutral-50 font-medium"
+              "nav-link px-3 py-2 rounded-xl text-sm",
+              active("/sikca-sorulan-sorular") && "bg-neutral-100 font-medium"
             )}
           >
             Sorular
@@ -211,161 +209,34 @@ export default function SiteHeader() {
           <Link
             href="/iletisim"
             className={cn(
-              "rounded-xl px-3 py-2 text-sm hover:bg-neutral-50",
-              active("/iletisim") && "bg-neutral-50 font-medium"
+              "nav-link px-3 py-2 rounded-xl text-sm",
+              active("/iletisim") && "bg-neutral-100 font-medium"
             )}
           >
             İletişim
           </Link>
         </nav>
 
-        {/* Desktop CTA */}
+        {/* CTA */}
         <div className="hidden md:flex">
           <a
             href={WHATSAPP}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-2xl border px-4 py-2 text-sm font-medium shadow-sm hover:bg-neutral-50"
+            className="btn-primary"
           >
-            WhatsApp
+            WhatsApp’tan Ön Değerlendirme
           </a>
         </div>
 
-        {/* Mobile button */}
+        {/* MOBILE */}
         <button
-          type="button"
-          className="inline-flex items-center justify-center rounded-2xl border px-3 py-2 text-sm md:hidden"
-          onClick={() => setMobileOpen((v) => !v)}
-          aria-label="Menüyü aç/kapat"
+          className="rounded-xl border px-3 py-2 text-sm md:hidden"
+          onClick={() => setMobileOpen(v => !v)}
         >
-          {mobileOpen ? "Kapat" : "Menü"}
+          Menü
         </button>
       </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="border-t bg-white md:hidden">
-          <div className="mx-auto max-w-6xl px-6 py-4">
-            <div className="grid gap-2">
-              <Link
-                className={cn(
-                  "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
-                  active("/") && "bg-neutral-50 font-medium"
-                )}
-                href="/"
-              >
-                Anasayfa
-              </Link>
-
-              <div className="rounded-2xl border p-3">
-                <div className="px-1 pb-2 text-xs font-semibold text-neutral-500">
-                  Hizmetler
-                </div>
-                <div className="grid gap-2">
-                  <Link
-                    className={cn(
-                      "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
-                      active("/abd-vizesi") && "bg-neutral-50 font-medium"
-                    )}
-                    href="/abd-vizesi"
-                  >
-                    ABD Vize Danışmanlığı
-                  </Link>
-                  <Link
-                    className={cn(
-                      "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
-                      active("/abd-vizesi/red-sonrasi-basvuru") && "bg-neutral-50 font-medium"
-                    )}
-                    href="/abd-vizesi/red-sonrasi-basvuru"
-                  >
-                    Red Sonrası Başvuru
-                  </Link>
-                  <Link
-                    className={cn(
-                      "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
-                      active("/green-card-dv-lottery") &&
-                        "bg-neutral-50 font-medium"
-                    )}
-                    href="/green-card-dv-lottery"
-                  >
-                    Green Card (DV Lottery)
-                  </Link>
-
-                  <Link
-                    className={cn(
-                      "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
-                      active("/randevu-one-cekme") &&
-                        "bg-neutral-50 font-medium"
-                    )}
-                    href="/randevu-one-cekme"
-                  >
-                    Randevu Öne Çekme
-                  </Link>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border p-3">
-                <div className="px-1 pb-2 text-xs font-semibold text-neutral-500">
-                  ABD Vize Sayfaları
-                </div>
-                <div className="grid gap-2">
-                  {nav.map((i) => (
-                    <Link
-                      key={i.href}
-                      className={cn(
-                        "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
-                        active(i.href) && "bg-neutral-50 font-medium"
-                      )}
-                      href={i.href}
-                    >
-                      {i.label}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <Link
-                className={cn(
-                  "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
-                  active("/blog") && "bg-neutral-50 font-medium"
-                )}
-                href="/blog"
-              >
-                Vize Rehberi
-              </Link>
-
-              <Link
-                className={cn(
-                  "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
-                  active("/sikca-sorulan-sorular") && "bg-neutral-50 font-medium"
-                )}
-                href="/sikca-sorulan-sorular"
-              >
-                Sık Sorulan Sorular
-              </Link>
-
-              <Link
-                className={cn(
-                  "rounded-2xl border px-4 py-3 text-sm hover:bg-neutral-50",
-                  active("/iletisim") && "bg-neutral-50 font-medium"
-                )}
-                href="/iletisim"
-              >
-                İletişim
-              </Link>
-
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl border px-4 py-3 text-sm font-medium shadow-sm hover:bg-neutral-50"
-              >
-                WhatsApp’tan Yaz
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   );
 }

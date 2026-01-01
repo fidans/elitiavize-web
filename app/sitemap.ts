@@ -18,6 +18,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog/abd-vizesi-neden-reddedilir",
     "/blog/ds-160-hatalari",
     "/blog/b1-b2-mulakat-sorulari",
+    "/hizmetler",
+    "/green-card-dv-lottery",
+    "/randevu-one-cekme",
+
 
 
   ];

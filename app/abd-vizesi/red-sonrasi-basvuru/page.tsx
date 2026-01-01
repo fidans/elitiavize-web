@@ -13,16 +13,20 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    q: "Red aldıktan sonra hemen tekrar başvurulur mu?",
-    a: "Her profil farklıdır. Temel nokta, önceki redin sebeplerini doğru analiz edip başvuruda anlamlı bir değişiklik/tutarlılık göstermektir. Biz önce ön değerlendirme yaparız.",
+    q: "Red aldıktan sonra hemen tekrar başvurabilir miyim?",
+    a: "Her profil farklıdır. Önce redin gerçek nedenini anlamak gerekir. Aynı dosyayla tekrar başvurmak çoğu zaman riski artırır.",
   },
   {
-    q: "Red sebebi yazmıyorsa ne yapılır?",
-    a: "Red kağıdındaki madde tek başına yeterli olmayabilir. DS-160, evraklar ve mülakat akışı birlikte değerlendirilmelidir. Elitia Vize, dosya bütünlüğüne göre yol haritası çıkarır.",
+    q: "Red kağıdında sebep net yazmıyorsa ne yapılır?",
+    a: "Red maddesi tek başına yeterli değildir. DS-160, evraklar ve mülakat anlatımı birlikte analiz edilmelidir.",
   },
   {
     q: "Red sonrası danışmanlıkta ne yapıyorsunuz?",
-    a: "Ön analiz + DS-160 tutarlılık kontrolü + evrak uyumu + mülakat prova. Amaç ezber cevap değil, profilin doğru konumlandırılmasıdır.",
+    a: "Profil & red analizi, DS-160 tutarlılık kontrolü, evrak uyumu ve mülakat hazırlığı. Amaç ezber değil, doğru konumlandırmadır.",
+  },
+  {
+    q: "Red sonrası başvuruda garanti var mı?",
+    a: "Hayır. Hiçbir danışmanlık sonucu garanti edemez. Ancak risk yaratan hatalar ciddi şekilde azaltılabilir.",
   },
 ];
 
@@ -40,7 +44,6 @@ function FAQJsonLd() {
   return (
     <script
       type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
     />
   );
@@ -48,173 +51,186 @@ function FAQJsonLd() {
 
 export default function RedSonrasiBasvuruPage() {
   return (
-    <main className="mx-auto max-w-6xl px-6 py-12">
+    <main className="min-h-screen">
       <FAQJsonLd />
 
-      <nav className="text-sm text-neutral-600">
-        <Link className="hover:underline" href="/">Anasayfa</Link>{" "}
-        <span className="text-neutral-400">/</span>{" "}
-        <Link className="hover:underline" href="/abd-vizesi">ABD Vizesi</Link>{" "}
-        <span className="text-neutral-400">/</span>{" "}
-        <span className="text-neutral-900">Red Sonrası Başvuru</span>
-      </nav>
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(255,7,11,.10)] to-transparent" />
 
-      <section className="mt-6 rounded-3xl border bg-white p-8 shadow-sm">
-        <div className="inline-flex w-fit items-center gap-2 rounded-full border px-4 py-2 text-sm">
-          <span className="font-medium">ABD Vizesi</span>
-          <span className="text-neutral-500">•</span>
-          <span className="text-neutral-600">Red Sonrası Yeniden Başvuru</span>
+        <div className="relative mx-auto max-w-6xl px-6 pt-14 pb-10">
+          <nav className="text-sm text-neutral-600">
+            <Link href="/" className="hover:underline">Anasayfa</Link>{" "}
+            <span className="text-neutral-400">/</span>{" "}
+            <Link href="/abd-vizesi" className="hover:underline">ABD Vizesi</Link>{" "}
+            <span className="text-neutral-400">/</span>{" "}
+            <span className="text-neutral-900">Red Sonrası Başvuru</span>
+          </nav>
+
+          <div className="mt-6 rounded-3xl bg-white p-8 shadow-soft">
+            <div className="flex flex-col gap-6">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-4 py-2 text-sm shadow-soft">
+                <span className="font-medium text-[var(--brand-navy)]">
+                  ABD Vizesi
+                </span>
+                <span className="text-neutral-400">•</span>
+                <span className="text-neutral-600">Red Sonrası Yeniden Başvuru</span>
+              </div>
+
+              <h1 className="max-w-4xl text-3xl font-semibold leading-tight sm:text-5xl">
+                ABD vize reddi sonrası{" "}
+                <span className="text-[var(--brand-red)] font-bold">
+                  aynı hatayı tekrar etmeyin
+                </span>
+                .
+              </h1>
+
+              <p className="max-w-3xl text-neutral-700 sm:text-lg">
+                Red sonrası en büyük hata, başvuruyu değiştirmeden tekrar denemektir.
+                Elitia Vize, süreci <strong>risk analizi</strong>,{" "}
+                <strong>tutarlılık</strong> ve{" "}
+                <strong>doğru konumlandırma</strong> üzerinden yönetir.
+              </p>
+
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  className="btn-primary"
+                  href={WHATSAPP}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Red Sonrası Ön Değerlendirme (WhatsApp)
+                </a>
+
+                <Link
+                  href="/iletisim"
+                  className="text-sm font-medium text-[var(--brand-navy)] underline underline-offset-4"
+                >
+                  İletişim
+                </Link>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-3">
+                <div className="rounded-2xl bg-neutral-50 p-4">
+                  <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                    🔍 Red Analizi
+                  </div>
+                  <div className="mt-1 text-sm text-neutral-600">
+                    Görünen değil, gerçek red nedenleri.
+                  </div>
+                </div>
+                <div className="rounded-2xl bg-neutral-50 p-4">
+                  <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                    🧾 DS-160 Tutarlılığı
+                  </div>
+                  <div className="mt-1 text-sm text-neutral-600">
+                    Çelişki yaratan alanlar temizlenir.
+                  </div>
+                </div>
+                <div className="rounded-2xl bg-neutral-50 p-4">
+                  <div className="text-sm font-semibold text-[var(--brand-navy)]">
+                    🎤 Mülakat Hazırlığı
+                  </div>
+                  <div className="mt-1 text-sm text-neutral-600">
+                    Ezber değil, profile uygun anlatım.
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-xs text-neutral-500">
+                Danışmanlık hizmetidir. Nihai karar ilgili resmi makamlar tarafından verilir.
+              </p>
+            </div>
+          </div>
         </div>
-
-        <h1 className="mt-4 text-3xl font-semibold leading-tight sm:text-5xl">
-          ABD vize reddi sonrası yeniden başvuru: riskleri azaltan yol haritası
-        </h1>
-
-        <p className="mt-4 max-w-3xl text-neutral-700 sm:text-lg">
-          Red sonrası en büyük hata “aynı dosyayla tekrar denemek”tir.
-          Elitia Vize, süreci adım adım öğretmez; <strong>başvuruyu tutarlılık ve risk analizi</strong> ile yönetir.
-          Amacımız: başvurunun zayıf noktalarını netleştirip, dosyayı doğru konumlandırmaktır.
-        </p>
-
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-2xl border px-5 py-3 text-sm font-medium shadow-sm hover:bg-neutral-50"
-          >
-            Red Sonrası Ön Değerlendirme (WhatsApp)
-          </a>
-          <Link
-            href="/iletisim"
-            className="inline-flex items-center justify-center rounded-2xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
-          >
-            İletişim
-          </Link>
-        </div>
-
-        <p className="mt-4 text-xs text-neutral-500">
-          Not: Danışmanlık hizmeti sonuç garantisi vermez. Ama red riskini artıran hataları azaltmak için süreç doğru yönetilebilir.
-        </p>
       </section>
 
-      <section className="mt-10 grid gap-6 lg:grid-cols-2">
-        <div className="rounded-3xl border p-8">
-          <h2 className="text-2xl font-semibold">Red sonrası en sık yapılan 5 hata</h2>
-          <ul className="mt-6 space-y-3 text-sm text-neutral-700">
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">1) DS-160’ı acele ve tutarsız doldurmak</div>
-              <div className="mt-1 text-neutral-600">
-                Tarih/iş/adres/amaç tutarsızlıkları mülakatta güven kaybı yaratabilir.
+      {/* HATALAR */}
+      <section className="mx-auto max-w-6xl px-6 py-12">
+        <div className="rounded-3xl bg-white p-8 shadow-soft">
+          <h2 className="text-2xl font-semibold text-[var(--brand-navy)]">
+            Red sonrası en sık yapılan hatalar
+          </h2>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            {[
+              "Aynı DS-160 ile tekrar başvurmak",
+              "Red sebebini tek maddeye indirgemek",
+              "Seyahat amacını netleştirmemek",
+              "Evrakları kontrolsüz çoğaltmak",
+              "Mülakata ezber cevaplarla gitmek",
+            ].map((x) => (
+              <div key={x} className="rounded-2xl bg-neutral-50 p-4 text-sm text-neutral-700">
+                ❌ {x}
               </div>
-            </li>
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">2) “Aynı dosyayla tekrar denemek”</div>
-              <div className="mt-1 text-neutral-600">
-                Red sonrası başvuruda, dosyada anlamlı iyileştirme ve netlik gerekir.
-              </div>
-            </li>
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">3) Seyahat amacını belirsiz bırakmak</div>
-              <div className="mt-1 text-neutral-600">
-                Planın profil ile uyumu değerlendirilir; ezber cümleler fayda etmez.
-              </div>
-            </li>
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">4) Evrakları amaçsız “kalabalık” yapmak</div>
-              <div className="mt-1 text-neutral-600">
-                Çok evrak değil, doğru evrak ve doğru anlatı önemlidir.
-              </div>
-            </li>
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">5) Mülakata “ezber cevap” ile gitmek</div>
-              <div className="mt-1 text-neutral-600">
-                Değerlendirme tutarlılık üzerinedir; doğal ve profil ile uyumlu anlatım gerekir.
-              </div>
-            </li>
-          </ul>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div className="rounded-3xl border p-8">
-          <h2 className="text-2xl font-semibold">Elitia Vize bu süreçte ne yapar?</h2>
-          <p className="mt-2 text-neutral-700">
-            Red sonrası başvuruyu, “tek hamle” değil, bütünsel bir dosya yönetimi olarak ele alırız.
-          </p>
+      {/* NASIL ÇALIŞIYORUZ */}
+      <section className="mx-auto max-w-6xl px-6 pb-12">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="rounded-3xl bg-white p-8 shadow-soft">
+            <h2 className="text-2xl font-semibold text-[var(--brand-navy)]">
+              Elitia Vize yaklaşımı
+            </h2>
 
-          <ol className="mt-6 space-y-3 text-sm text-neutral-700">
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">1) Profil & red analizi</div>
-              <div className="mt-1 text-neutral-600">
-                Kısa profil + önceki başvuru akışı üzerinden riskli noktaları tespit ederiz.
-              </div>
-            </li>
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">2) DS-160 tutarlılık kontrolü</div>
-              <div className="mt-1 text-neutral-600">
-                İş/adres/finansman/seyahat amacı alanlarında çelişki riskini azaltırız.
-              </div>
-            </li>
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">3) Evrak uyumu & anlatı netliği</div>
-              <div className="mt-1 text-neutral-600">
-                Evrakların “ne söylediğini” netleştirir, gereksiz riskleri temizleriz.
-              </div>
-            </li>
-            <li className="rounded-2xl border p-4">
-              <div className="font-medium">4) Mülakat hazırlığı (prova)</div>
-              <div className="mt-1 text-neutral-600">
-                Ezber yerine, profilinize uygun net anlatım ve soru senaryoları ile hazırlık yaparız.
-              </div>
-            </li>
-          </ol>
+            <div className="mt-6 grid gap-3">
+              {[
+                "Profil & red analizi",
+                "DS-160 tutarlılık kontrolü",
+                "Evrak uyumu ve anlatı netliği",
+                "Mülakat prova & senaryo çalışması",
+              ].map((x, i) => (
+                <div key={x} className="rounded-2xl bg-neutral-50 p-4 text-sm">
+                  <strong>{i + 1}.</strong> {x}
+                </div>
+              ))}
+            </div>
+          </div>
 
-          <div className="mt-6 rounded-2xl border p-5">
-            <div className="text-sm font-medium">Hızlı başlangıç</div>
-            <p className="mt-1 text-sm text-neutral-600">
-              WhatsApp’tan red tarihinizi ve kısaca profilinizi yazın; size özel yol haritasını çıkaralım.
+          <div className="rounded-3xl bg-gradient-to-br from-[rgba(255,7,11,.12)] to-white p-8">
+            <h3 className="text-xl font-semibold text-[var(--brand-navy)]">
+              Hızlı başlangıç
+            </h3>
+            <p className="mt-2 text-sm text-neutral-700">
+              WhatsApp’ta red tarihinizi, vize türünü ve kısa profilinizi yazın.
             </p>
             <div className="mt-4">
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-2xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
-              >
-                WhatsApp’a Git
+              <a className="btn-primary" href={WHATSAPP} target="_blank" rel="noreferrer">
+                WhatsApp’tan Yaz
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mt-10 rounded-3xl border p-8">
-        <h2 className="text-2xl font-semibold">Sık Sorulan Sorular</h2>
-        <div className="mt-6 grid gap-4 lg:grid-cols-2">
-          {faqs.map((f) => (
-            <div key={f.q} className="rounded-2xl border p-5">
-              <div className="text-sm font-semibold">{f.q}</div>
-              <div className="mt-2 text-sm text-neutral-700">{f.a}</div>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* CTA */}
+      <section className="relative">
+        <div className="absolute inset-0 bg-gradient-to-br from-[rgba(255,7,11,.16)] via-[rgba(24,154,144,.08)] to-transparent" />
+        <div className="relative mx-auto max-w-6xl px-6 pt-6 pb-16">
+          <div className="overflow-hidden rounded-3xl bg-white shadow-soft">
+            <div className="grid gap-6 p-8 sm:grid-cols-2 sm:items-center">
+              <div>
+                <h3 className="text-2xl font-semibold text-[var(--brand-navy)]">
+                  Red sonrası başvuruyu doğru kurgulayalım.
+                </h3>
+                <p className="mt-2 text-sm text-neutral-700">
+                  Hataları temizleyelim, dosyayı yeniden konumlandıralım.
+                </p>
+              </div>
 
-      <section className="mt-10 rounded-3xl border bg-white p-8">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h3 className="text-xl font-semibold">Red sonrası başvurunuzu birlikte planlayalım</h3>
-            <p className="mt-1 text-sm text-neutral-600">
-              Profilinizi yazın, riskleri ve bir sonraki adımı netleştirelim.
-            </p>
+              <div className="flex flex-col items-start gap-3 sm:items-end">
+                <a className="btn-primary px-6 py-3 text-base" href={WHATSAPP} target="_blank" rel="noreferrer">
+                  WhatsApp’tan Ön Değerlendirme
+                </a>
+                <p className="text-xs text-neutral-500 sm:text-right">
+                  Danışmanlık hizmetidir. Sonuç garantisi vermez.
+                </p>
+              </div>
+            </div>
           </div>
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-2xl border px-5 py-3 text-sm font-medium hover:bg-neutral-50"
-          >
-            WhatsApp
-          </a>
         </div>
       </section>
     </main>

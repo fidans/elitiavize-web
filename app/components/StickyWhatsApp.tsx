@@ -17,20 +17,23 @@ export default function StickyWhatsApp() {
   }, []);
 
   return (
-    <div className="fixed inset-x-0 bottom-4 z-50 px-4">
-      <div className="mx-auto max-w-6xl">
+    // ✅ Bu katman asla tıklama yemez
+    <div className="fixed inset-x-0 bottom-4 z-40 px-4 pointer-events-none">
+      <div className="mx-auto max-w-6xl flex justify-end">
         <div
-          className={`flex justify-end transition-all ${
-            show ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0 pointer-events-none"
+          className={`transition-all ${
+            show
+              ? "translate-y-0 opacity-100"
+              : "translate-y-3 opacity-0"
           }`}
         >
+          {/* ✅ Sadece buton tıklanabilir */}
           <a
             href={WHATSAPP}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-2xl border bg-white px-4 py-3 text-sm font-medium shadow-lg hover:bg-neutral-50"
+            className="btn-primary px-5 py-3 shadow-soft pointer-events-auto wa-pulse"
           >
-            <span className="inline-block h-2 w-2 rounded-full bg-neutral-900" />
             WhatsApp’tan Yaz
           </a>
         </div>

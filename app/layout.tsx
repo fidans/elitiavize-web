@@ -21,7 +21,13 @@ export const metadata: Metadata = {
   description:
     "ABD vize başvurularında profil ön değerlendirme, DS-160 danışmanlığı, evrak kontrolü, randevu planlama ve mülakat hazırlığı.",
   metadataBase: new URL("https://elitiavize.com"),
+  icons: {
+    icon: [
+      { url: "/elitia-logo.svg", type: "image/svg+xml" },
+    ],
+  },
 };
+
 
 export default function RootLayout({
   children,

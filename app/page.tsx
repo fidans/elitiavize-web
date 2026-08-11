@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     q: "Elitia Vize hangi aşamalarda destek sağlar?",
-    a: "Profil ön değerlendirme, DS-160 formu danışmanlığı, evrak kontrolü, randevu süreci planlama ve mülakat hazırlığı gibi adımlarda rehberlik sağlar.",
+    a: "Profil ön değerlendirme, DS-160 formu danışmanlığı, evrak kontrolü ve mülakat hazırlığı gibi adımlarda rehberlik sağlar.",
   },
   {
     q: "DS-160 formunu kim doldurmalı?",

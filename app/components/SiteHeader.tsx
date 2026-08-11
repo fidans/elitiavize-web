@@ -14,7 +14,6 @@ const servicesDropdown = [
   { href: "/abd-vizesi", t: "ABD Vize Danışmanlığı", d: "B1/B2 öncelikli danışmanlık akışı." },
   { href: "/abd-vizesi/red-sonrasi-basvuru", t: "Red Sonrası Başvuru", d: "Red analizi + yeni dosya kurgusu." },
   { href: "/green-card-dv-lottery", t: "Green Card (DV Lottery)", d: "Hata riskini azaltan başvuru kontrolü." },
-  { href: "/randevu-one-cekme", t: "Randevu Öne Çekme", d: "Takip planı + profesyonel süreç." },
 ];
 
 function cn(...classes: Array<string | false | undefined | null>) {

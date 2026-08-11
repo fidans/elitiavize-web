@@ -7,7 +7,7 @@ const WHATSAPP =
 export const metadata: Metadata = {
   title: "Hizmetler | Elitia Vize",
   description:
-    "Elitia Vize hizmetleri: ABD vize danışmanlığı, Green Card (DV Lottery) başvuru danışmanlığı ve randevu öne çekme/takip hizmeti.",
+    "Elitia Vize hizmetleri: ABD vize danışmanlığı, Green Card (DV Lottery) başvuru danışmanlığı ",
   alternates: { canonical: "/hizmetler" },
 };
 
@@ -170,32 +170,7 @@ export default function ServicesPage() {
             </div>
           </div>
 
-          {/* Randevu */}
-          <div className="rounded-3xl bg-white p-7 shadow-soft">
-            <div className="flex items-start gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[rgba(255,7,11,.08)] text-xl">
-                📅
-              </div>
-              <div>
-                <div className="text-sm font-semibold text-[var(--brand-navy)]">
-                  Randevu Öne Çekme
-                </div>
-                <p className="mt-2 text-sm text-neutral-700">
-                  Randevu takip planı ve süreç yönetimi. Dönemsel uygunluklara göre
-                  profesyonel takip.
-                </p>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <Link
-                className="block rounded-2xl bg-neutral-50 px-4 py-3 text-sm transition hover:-translate-y-0.5 hover:shadow-soft"
-                href="/randevu-one-cekme"
-              >
-                Sayfayı İncele
-              </Link>
-            </div>
-          </div>
+          
         </div>
       </section>
 
